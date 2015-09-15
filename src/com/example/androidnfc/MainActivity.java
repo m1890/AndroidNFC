@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements 
-	CreateNdefMessageCallback, OnNdefPushCompleteCallback{
+public class MainActivity extends Activity implements CreateNdefMessageCallback, OnNdefPushCompleteCallback{
 	
 	TextView textInfo;
 	EditText textOut;
@@ -87,12 +86,8 @@ public class MainActivity extends Activity implements
 		String stringOut = textOut.getText().toString();
 		byte[] bytesOut = stringOut.getBytes();
 		
-		NdefRecord ndefRecordOut = new NdefRecord(
-				NdefRecord.TNF_MIME_MEDIA, 
-				"text/plain".getBytes(),
-                new byte[] {}, 
-                bytesOut);
-
+		//NdefRecord ndefRecordOut = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,"provaaa".getBytes(), new byte[] {},bytesOut);
+		NdefRecord ndefRecordOut = NdefRecord.createUri(stringOut);
 		NdefMessage ndefMessageout = new NdefMessage(ndefRecordOut);
 		return ndefMessageout;
 	}
