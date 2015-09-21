@@ -87,10 +87,7 @@ public class MainActivity extends Activity implements CreateNdefMessageCallback,
 		
 		String stringOut = textOut.getText().toString();
 		byte[] bytesOut = stringOut.getBytes();
-		
-		//NdefRecord ndefRecordOut = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,"provaaa".getBytes(), new byte[] {},bytesOut);
-		NdefRecord ndefRecordOut = NdefRecord.createUri(stringOut);
-		//NdefRecord ndefRecordOut= NdefRecord.createMime("application/iot","Boh speriamo ca funziona".getBytes(Charset.forName("US-ASCII")));
+		NdefRecord ndefRecordOut= NdefRecord.createMime("application/iot",bytesOut);
 		NdefMessage ndefMessageout = new NdefMessage(ndefRecordOut);
 		return ndefMessageout;
 	}
